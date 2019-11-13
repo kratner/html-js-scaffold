@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>
+      HTML / JavaScript Scaffolding for Text
+    </title>
+    <style></style>
+    <script>
+      // firstArray is in global scope
+      var firstArray = [];
+      document.addEventListener("DOMContentLoaded", function() {
+        // Add application logic and bind event handlers here
+        window.textInput = document.getElementsByClassName("inputvalue")[0];
+        document.addEventListener("click", function(evt) {
+          var el = evt.target;
+          var txt = window.textInput;
+          if (el.className === "inputbutton") {
+            // handle button click
+            console.log(txt.value);
+            txt.value = "";
+            // do something with the input text value
+            txt.focus();
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" class="inputvalue" placeholder="Enter Value..." />
+    <input type="button" value="Submit Value" class="inputbutton" />
+    <h2>Unordered List</h2>
+    <ul class="listItems">
+      <li>No items.</li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>
+      Bubble Sort Demo
+    </title>
+    <style></style>
+    <script>
+      var valuesToSort = [];
+      function bubbleSort(unsortedArray, asc = true) {
+        var swp;
+        var l = unsortedArray.length - 1;
+        var sortedArray = unsortedArray;
+        do {
+          swp = false;
+          for (var i = 0; i < l; i++) {
+            if (sortedArray[i] > sortedArray[i + 1]) {
+              var temp = sortedArray[i];
+              sortedArray[i] = sortedArray[i + 1];
+              sortedArray[i + 1] = temp;
+              swp = true;
+            }
+          }
+          l--;
+        } while (swp);
+        return sortedArray;
+      }
+      function displaySortedList(elSorted) {
+        var sortedListDisplay = "";
+        bubbleSort(valuesToSort).forEach(function(item) {
+          sortedListDisplay += "<li>" + item + "</li>";
+        });
+        elSorted.innerHTML = sortedListDisplay;
+      }
+      document.addEventListener("DOMContentLoaded", function() {
+        window.textInput = document.getElementsByClassName("inputvalue")[0];
+        window.sortedList = document.getElementsByClassName("sortedList")[0];
+        document.addEventListener("click", function(evt) {
+          var el = evt.target;
+          var txt = window.textInput;
+          if (el.className === "inputbutton") {
+            valuesToSort.push(txt.value);
+            txt.value = "";
+            displaySortedList(window.sortedList);
+            txt.focus();
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" class="inputvalue" placeholder="Enter Value..." />
+    <input type="button" value="Submit Value" class="inputbutton" />
+    <h2>Sorted List</h2>
+    <ul class="sortedList">
+      <li>No items.</li>
+    </ul>
+  </body>
+</html>
